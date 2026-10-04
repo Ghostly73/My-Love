@@ -1,0 +1,97 @@
+/* ================= CSS (tampilan) ================= */
+:root { --bg1:#1a0b2e; --bg2:#4a1d6b; --accent:#ff7eb3; --gold:#ffd166; --text:#fff; }
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  color: var(--text); font-family: "Segoe UI", system-ui, sans-serif;
+  background: linear-gradient(160deg, var(--bg1), var(--bg2)) fixed;
+  min-height: 100vh; overflow-x: hidden;
+}
+h1 { font-size: clamp(1.8rem, 6vw, 3rem); margin-bottom: 14px; }
+h2 { font-size: clamp(1.4rem, 4vw, 2rem); margin-bottom: 8px; }
+p  { line-height: 1.7; opacity: .93; }
+.center { text-align: center; }
+.wrap { max-width: 920px; margin: 0 auto; padding: 0 22px; }
+.full { min-height: 100vh; display: flex; flex-direction: column; align-items: center;
+        justify-content: center; text-align: center; padding: 40px 24px; }
+button {
+  font-size: 1.05rem; padding: 14px 32px; border: none; border-radius: 999px;
+  background: var(--accent); color: #2a0a1f; font-weight: 700; cursor: pointer;
+  margin-top: 22px; transition: transform .15s;
+}
+button:hover { transform: scale(1.06); }
+.heart { font-size: 3.5rem; display: inline-block; animation: beat 1.2s infinite; }
+@keyframes beat { 0%,100% { transform: scale(1);} 50% { transform: scale(1.2);} }
+.sectionTitle { text-align: center; margin: 90px 0 36px; }
+.sectionTitle small { display: block; opacity: .7; margin-top: 4px; }
+
+/* hitung mundur */
+.countdown { display: flex; gap: 12px; justify-content: center; margin: 26px 0; flex-wrap: wrap; }
+.countdown div { background: rgba(255,255,255,.1); border-radius: 14px; padding: 14px 10px; min-width: 76px; }
+.countdown b { display: block; font-size: 2rem; }
+.countdown span { font-size: .75rem; opacity: .75; }
+
+#site { display: none; }
+
+/* efek muncul saat scroll */
+.reveal { opacity: 0; transition: opacity .9s ease, transform .9s ease; }
+.reveal.up    { transform: translateY(40px); }
+.reveal.left  { transform: translateX(-60px); }
+.reveal.right { transform: translateX(60px); }
+.reveal.zoom  { transform: scale(.85); }
+.reveal.show  { opacity: 1; transform: none; }
+.scrollHint { margin-top: 30px; font-size: 1.6rem; animation: bob 1.5s infinite; }
+@keyframes bob { 0%,100% { transform: translateY(0);} 50% { transform: translateY(10px);} }
+
+/* hero + hati melayang */
+#hero { position: relative; overflow: hidden; }
+.floaty { position: absolute; bottom: -40px; animation: rise linear infinite; opacity: .5; pointer-events: none; }
+@keyframes rise { to { transform: translateY(-110vh) rotate(25deg); opacity: 0; } }
+
+/* PESAN: kartu kiri-kanan bergantian */
+.bubbles { display: flex; flex-direction: column; gap: 22px; }
+.bubble {
+  max-width: 78%; padding: 20px 24px; border-radius: 22px; font-size: 1.15rem; line-height: 1.7;
+  background: rgba(255,255,255,.1); backdrop-filter: blur(6px); border: 1px solid rgba(255,255,255,.12);
+}
+.bubble:nth-child(odd)  { align-self: flex-start; border-bottom-left-radius: 6px; }
+.bubble:nth-child(even) { align-self: flex-end; background: rgba(255,126,179,.18); border-bottom-right-radius: 6px; }
+
+/* SOROTAN: pita besar */
+.band {
+  margin: 100px 0 0; padding: 70px 24px; text-align: center;
+  background: linear-gradient(90deg, rgba(255,126,179,.25), rgba(255,209,102,.2));
+  border-block: 1px solid rgba(255,255,255,.15);
+}
+.band p { font-size: clamp(1.4rem, 4.5vw, 2.4rem); font-weight: 700; max-width: 780px; margin: 0 auto; line-height: 1.4; }
+
+/* LINIMASA */
+.timeline { position: relative; padding-left: 28px; border-left: 2px solid rgba(255,255,255,.25); margin-left: 8px; }
+.tl { position: relative; margin-bottom: 34px; }
+.tl::before { content: ""; position: absolute; left: -37px; top: 6px; width: 14px; height: 14px;
+              border-radius: 50%; background: var(--accent); box-shadow: 0 0 0 5px rgba(255,126,179,.25); }
+.tl b { color: var(--gold); display: block; margin-bottom: 4px; }
+
+/* MEMORY: polaroid miring */
+.memory { columns: 3 230px; column-gap: 22px; }
+.polaroid {
+  break-inside: avoid; margin-bottom: 26px; background: #fff; color: #333; padding: 12px 12px 14px;
+  border-radius: 6px; box-shadow: 0 10px 30px rgba(0,0,0,.35); transition: transform .3s;
+}
+.polaroid:nth-child(3n+1) { transform: rotate(-2.5deg); }
+.polaroid:nth-child(3n+2) { transform: rotate(2deg); }
+.polaroid:nth-child(3n)   { transform: rotate(-1deg); }
+.polaroid.show:hover { transform: rotate(0) scale(1.04) !important; z-index: 2; position: relative; }
+.polaroid img, .polaroid video, .polaroid iframe { width: 100%; display: block; border-radius: 3px; background: #000; cursor: zoom-in; }
+.polaroid iframe { aspect-ratio: 16/9; border: 0; cursor: default; }
+.polaroid video { cursor: default; }
+.polaroid .cap { margin-top: 10px; font-size: .95rem; text-align: center; font-family: "Comic Sans MS", cursive, sans-serif; }
+
+/* lightbox */
+#lightbox { position: fixed; inset: 0; background: rgba(0,0,0,.88); display: none; z-index: 50;
+            align-items: center; justify-content: center; padding: 20px; cursor: zoom-out; }
+#lightbox img { max-width: 100%; max-height: 100%; border-radius: 8px; }
+
+.closing { padding: 120px 24px 140px; }
+canvas#confetti { position: fixed; inset: 0; pointer-events: none; z-index: 40; }
+@media (max-width: 600px) { .bubble { max-width: 92%; } }

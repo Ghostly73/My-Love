@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Hesti Ruwaida</title>
+<link rel="stylesheet" href="style.css">
+</head>
+
+<!-- ================= HTML (isi halaman) ================= -->
+<body>
+<canvas id="confetti"></canvas>
+<div id="lightbox"><img alt=""></div>
+
+<!-- 1. HALAMAN AWAL -->
+<section class="full" id="start">
+  <div class="heart">🎁</div>
+  <h1 id="startTitle"></h1>
+  <p>Tekan tombol di bawah untuk memulai.</p>
+  <button id="startBtn">Mulai ✨</button>
+</section>
+
+<!-- 2. HITUNG MUNDUR -->
+<section class="full" id="wait" style="display:none">
+  <h1>Sek lama kamu 20th yak wkwkwk⏳</h1>
+  <p>Kejutannya akan terbuka dalam:</p>
+  <div class="countdown">
+    <div><b id="d">0</b><span>hari</span></div>
+    <div><b id="h">0</b><span>jam</span></div>
+    <div><b id="m">0</b><span>menit</span></div>
+    <div><b id="s">0</b><span>detik</span></div>
+  </div>
+</section>
+
+<!-- 3. KEJUTAN -->
+<main id="site">
+
+  <!-- Hero -->
+  <section class="full" id="hero">
+    <div class="heart">🎉</div>
+    <h1 id="judul"></h1>
+    <p>Scroll ke bawah ya…</p>
+    <div class="scrollHint">⌄</div>
+  </section>
+
+  <!-- Pesan (kartu kiri-kanan) -->
+  <section class="wrap">
+    <div class="sectionTitle reveal up"><h2>Ada yang mau aku bilang 💬</h2></div>
+    <div class="bubbles" id="bubbles"></div>
+  </section>
+
+  <!-- Sorotan -->
+  <section class="band reveal zoom" id="band"><p id="sorotan"></p></section>
+
+  <!-- Linimasa (opsional) -->
+  <section class="wrap" id="tlSection" style="display:none">
+    <div class="sectionTitle reveal up"><h2>Perjalanan Kita 🛤️</h2></div>
+    <div class="timeline" id="timeline"></div>
+  </section>
+
+  <!-- Memory: foto & video -->
+  <section class="wrap" id="memSection" style="display:none">
+    <div class="sectionTitle reveal up">
+      <h2>Memory 📸</h2><small>Klik foto untuk memperbesar</small>
+    </div>
+    <div class="memory" id="memory"></div>
+  </section>
+
+  <!-- Penutup -->
+  <section class="closing center">
+    <h1 class="reveal zoom" id="penutup"></h1>
+    <p class="reveal up" id="dari"></p>
+  </section>
+</main>
+
+<script src="script.js"></script>
+</body>
+</html>
